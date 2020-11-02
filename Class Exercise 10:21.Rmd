@@ -1,0 +1,84 @@
+---
+title: "Class Code for 10/21"
+author: "nvadasz"
+date: "11/1/2020"
+output: 
+  html_document:
+    number_sections: true
+    toc: true
+    toc_foat: true
+---
+nyc <- read.csv("nycflights.csv")
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#Class Code for 10/21
+
+##Import Data
+
+## R Markdown
+
+First thing we will do is to import data
+
+```{r}
+#using Read.csv for reading the CSV file
+nyc <- read.csv("nycflights.csv")
+
+# Now we will explore this data
+str(nyc)
+head(nyc)
+tail(nyc)
+summary(nyc)
+```
+
+## Calculate Intersesting Metrics 
+```{r}
+#Average departure delay
+mean(nyc$dep_delay, na.rm = TRUE)
+#Average Air-time
+mean(nyc$air_time, na.rm = TRUE)
+#Standard Deviation
+sd(nyc$air_time, na.rm = TRUE)
+
+
+#which origin airports has the most flights
+```
+
+
+## clean data
+
+We will not need to clean data 
+
+```{r}
+#Delete the column named X
+nyc$X <- NULL
+
+#Recode Columns as factors as needed
+nyc$carrier <- as.factor(nyc$carrier)
+nyc$flight <- as.factor(nyc$flight)
+nyc$tailnum <- as.factor (nyc$tailnum)
+nyc$origin <- as.factor(nyc$origin)
+nyc$dest <- as.factor(nyc$dest)
+
+```
+
+
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
